@@ -1,0 +1,82 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+env/
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Data files - exclude large or sensitive data
+data/raw/
+data/processed/
+*.csv
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.parquet
+*.feather
+
+# Model files - exclude trained models
+models/
+*.pth
+*.pt
+*.joblib
+*.model
+*.onnx
+
+# Logs and outputs
+logs/
+*.log
+mlruns/
+outputs/
+predictions/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Package files
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# Documentation
+docs/_build/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Misc
+*.bak
+*.tmp
+*.~lock.*
