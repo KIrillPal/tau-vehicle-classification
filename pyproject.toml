@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "tau-vehicle"
+version = "0.1.0"
+description = "A package to train and infer the solution on \"TAU Vehicle Type Recognition Competition\" competition on Kaggle."
+authors = ["Kirill Kondrashov <kirpall@ya.ru>"]
+readme = "README.md"
+packages = [
+    { include = "tau-vehicle" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+dvc = "^3.59.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
