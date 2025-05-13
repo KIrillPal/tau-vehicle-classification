@@ -1,5 +1,5 @@
 # Data
-data/
+data/**/*.jpg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -24,7 +24,7 @@ env/
 # Data files - exclude large or sensitive data
 data/raw/
 data/processed/
-*.csv
+data/**/*.csv
 *.h5
 *.hdf5
 *.npy
@@ -83,3 +83,4 @@ docs/_build/
 *.bak
 *.tmp
 *.~lock.*
+/data
