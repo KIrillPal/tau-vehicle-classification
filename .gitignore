@@ -3,6 +3,7 @@ data/**/*.jpg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+**/.cache
 *.py[cod]
 *$py.class
 
@@ -36,6 +37,7 @@ data/**/*.csv
 
 # Model files - exclude trained models
 models/
+experiments/
 *.pth
 *.pt
 *.joblib
