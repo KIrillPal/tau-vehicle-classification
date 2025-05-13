@@ -2,4 +2,4 @@
     remote = tau-vehicle
 ['remote "tau-vehicle"']
     url = s3://tau-vehicle
-    endpointurl = http://109.248.163.128:9001
+    endpointurl = http://109.248.163.128:9000
