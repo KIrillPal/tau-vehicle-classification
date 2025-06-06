@@ -1,0 +1,29 @@
+dir: data/public
+split:
+  train: True
+  val: True
+  test: True
+
+classes:
+  - Ambulance
+  - Barge
+  - Bicycle
+  - Boat
+  - Bus
+  - Car
+  - Cart
+  - Caterpillar
+  - Helicopter
+  - Limousine
+  - Motorcycle
+  - Segway
+  - Snowmobile
+  - Tank
+  - Taxi
+  - Truck
+  - Van
+
+loader:
+  shuffle: True
+  pin_memory: True
+  num_workers: 4
