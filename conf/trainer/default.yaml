@@ -1,2 +1,5 @@
-optimizer: AdamW 
-cos_lr: True
+defaults:
+  - callbacks: default
+
+args:
+  strategy: ddp_spawn

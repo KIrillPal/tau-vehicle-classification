@@ -13,7 +13,7 @@ class VehicleDataset(Dataset):
             split: str = 'train', 
             transform: Optional[Callable] = None,
         ):
-        self.root_dir = data_config.dir / split
+        self.root_dir = Path(data_config.dir) / split
         self.transform = transform
         
         if 'classes' in data_config:
@@ -29,7 +29,7 @@ class VehicleDataset(Dataset):
         for cls_idx, cls_name in enumerate(self.classes):
             cls_dir = self.root_dir / cls_name
             self.samples.extend([
-                (img_path, cls_idx) 
+                (img_path.absolute(), cls_idx) 
                 for img_path in cls_dir.iterdir()
                 if img_path.suffix.lower() in ('.png', '.jpg', '.jpeg')
             ])

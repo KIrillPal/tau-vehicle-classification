@@ -4,8 +4,8 @@ from typing import Optional
 from pathlib import Path
 from omegaconf import DictConfig
 
-from src.data.dataset import VehicleDataset
-from src.data.transforms import create_base_transforms
+from tau_vehicle.src.data.dataset import VehicleDataset
+from tau_vehicle.src.data.transforms import create_transforms
 
 
 class VehicleDataModule(LightningDataModule):
@@ -13,13 +13,13 @@ class VehicleDataModule(LightningDataModule):
         super().__init__()
         self.data_dir = config.data.dir
         self.batch_size = config.hyp.batch
-        self.transforms = create_base_transforms(config.hyp.imgsz)
+        self.transforms = create_transforms(config.hyp.imgsz, config.hyp.augment)
         self.config = config
         
     def setup(self, stage: Optional[str] = None):
         if stage in ('fit', None):
-            self.train_ds = VehicleDataset(self.config.data, self.data_dir, 'train', self.transforms['train'])
-            self.val_ds = VehicleDataset(self.config.data, self.data_dir, 'val', self.transforms['val'])
+            self.train_ds = VehicleDataset(self.config.data, 'train', self.transforms['train'])
+            self.val_ds = VehicleDataset(self.config.data, 'val', self.transforms['val'])
             self.num_classes = len(self.train_ds.classes)
         
         if stage in ('test', None):
@@ -31,7 +31,8 @@ class VehicleDataModule(LightningDataModule):
             batch_size=self.batch_size,
             shuffle=shuffle,
             num_workers=self.config.data.loader.num_workers,
-            pin_memory=self.config.data.loader.pin_memory
+            pin_memory=self.config.data.loader.pin_memory,
+            persistent_workers=True
         )
     
     def train_dataloader(self):

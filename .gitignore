@@ -86,3 +86,6 @@ docs/_build/
 *.tmp
 *.~lock.*
 /data
+
+# PyTorch Lightning
+**/lightning_logs
