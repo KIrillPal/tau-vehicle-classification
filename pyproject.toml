@@ -5,7 +5,7 @@ description = "A package to train and infer the solution on \"TAU Vehicle Type R
 authors = ["Kirill Kondrashov <kirpall@ya.ru>"]
 readme = "README.md"
 packages = [
-    { include = "tau-vehicle" }
+    { include = "tau_vehicle" }
 ]
 
 [tool.poetry.dependencies]
@@ -15,6 +15,15 @@ mlflow = "^2.22.0"
 dvc-s3 = "^3.2.0"
 hydra-core = "^1.3.2"
 fire = "^0.7.0"
+pyopenssl = "^25.1.0"
+pytorch-lightning = "^2.5.1.post0"
+transformers = "^4.52.4"
+torchvision = "^0.22.1"
+poetry-dotenv-plugin = "^0.2.0"
+python-dotenv = "^1.1.0"
+timm = "^1.0.15"
+onnx = "^1.18.0"
+tensorrt = "^10.11.0.33"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -22,6 +31,7 @@ flake8 = "^7.2.0"
 black = "^25.1.0"
 isort = "^6.0.1"
 ipykernel = "^6.29.5"
+dvc-s3 = "^3.2.0"
 
 [build-system]
 requires = ["poetry-core"]

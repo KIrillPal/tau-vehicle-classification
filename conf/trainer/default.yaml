@@ -1,0 +1,5 @@
+defaults:
+  - callbacks: default
+
+args:
+  strategy: ddp_spawn

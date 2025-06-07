@@ -75,7 +75,6 @@ htmlcov/
 docs/_build/
 
 # Environment variables
-.env
 .env.local
 .env.development
 .env.test
@@ -86,3 +85,13 @@ docs/_build/
 *.tmp
 *.~lock.*
 /data
+
+# PyTorch Lightning
+**/lightning_logs
+
+# Checkpoints
+/checkpoints
+**.ckpt
+**.pt
+**.onnx
+**.engine

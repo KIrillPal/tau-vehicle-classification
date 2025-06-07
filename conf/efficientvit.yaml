@@ -1,0 +1,17 @@
+#############
+experiment: Vehicle-classification
+mlflow_uri: http://109.248.163.128:5000
+store_exp_to: experiments
+
+debug: False
+seed: 42
+devices: [0]
+matmul: 'medium'
+#############
+
+defaults:
+  - data: kaggle_public.yaml
+  - model: efficient_vit_b0.yaml
+  - trainer: default.yaml
+  - hyp: default.yaml
+  - _self_
