@@ -139,7 +139,8 @@ python3 -m tau_vehicle export to_engine checkpoints/best.ckpt
 В данном пакете реализованы два метода инференса.
 
 1. Предсказание по папке изображений. В результате сохраняется yaml файл, содержащий для каждого изображения предсказанный класс. Пример [файла](examples/best_predictions.yaml).
-   Пример (из корня репозитория):
+
+Пример (из корня репозитория):
 
 ```bash
 python3 -m tau_vehicle infer conf/infer/baseline.yaml data/private/test
