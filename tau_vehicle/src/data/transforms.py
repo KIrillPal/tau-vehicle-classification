@@ -31,3 +31,13 @@ def create_transforms(img_size: int, aug_config : DictConfig) -> Dict[str, T.Com
         'val': common,
         'test': common
     }
+    
+    
+def create_infer_transforms(img_size: int, transform_config : DictConfig) -> Dict[str, T.Compose]:
+    """Get standard transforms for train/val/test splits."""
+    common = T.Compose([
+        T.Resize((img_size, img_size)),
+        T.ToTensor(),
+        T.Normalize(transform_config.normalize.mean, transform_config.normalize.std)
+    ])
+    return common

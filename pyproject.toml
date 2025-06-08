@@ -24,6 +24,8 @@ python-dotenv = "^1.1.0"
 timm = "^1.0.15"
 onnx = "^1.18.0"
 tensorrt = "^10.11.0.33"
+onnxruntime = "^1.22.0"
+opencv-python = "^4.11.0.86"
 
 
 [tool.poetry.group.dev.dependencies]

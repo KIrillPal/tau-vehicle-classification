@@ -9,6 +9,12 @@ import collections
 from hydra import compose, initialize
 from tau_vehicle.src.model.huggingface import HuggingFaceModel
 
+
+def load_hydra_config(config_dir : str, config_name : str):
+    with initialize(version_base=None, config_path=config_dir):
+        config = compose(config_name)
+    return config
+
 class ModelExporter:
     """
     Export PyTorch .ckpt models to various formats.
@@ -30,8 +36,7 @@ class ModelExporter:
             output_path = ckpt_path.with_suffix('.pt')
         checkpoint = torch.load(ckpt_path, weights_only=False)
         
-        with initialize(version_base=None, config_path=config_dir):
-            config = compose(config_name)
+        config = load_hydra_config(config_dir, config_name)
             
         model = HuggingFaceModel(config.model, config.hyp)
         model.load_state_dict(checkpoint['state_dict'])
@@ -46,7 +51,6 @@ class ModelExporter:
         output_path: str = None,
         config_name : str = 'baseline',
         config_dir : str = '../../conf', 
-        input_shape: tuple = (1, 3, 224, 224),
         input_names: list = ["input"],
         output_names: list = ["output"],
         dynamic_axes: dict = None,
@@ -57,7 +61,6 @@ class ModelExporter:
         Args:
             ckpt_path: Path to input .ckpt file
             output_path: Optional output path
-            input_shape: Model input shape (default: (1, 3, 224, 224))
             input_names: List of input names
             output_names: List of output names
             dynamic_axes: Dict specifying dynamic axes
@@ -76,8 +79,11 @@ class ModelExporter:
         model = torch.load(pt_path, weights_only=False)
         if not isinstance(model, torch.nn.Module):
             raise ValueError("Model in .ckpt file must be a PyTorch Module for ONNX export")
-            
         model.eval()
+        
+        config = load_hydra_config(config_dir, config_name)
+        input_shape = (1, 3, config.hyp.imgsz, config.hyp.imgsz)
+        
         dummy_input = torch.randn(*input_shape)
         
         torch.onnx.export(
@@ -102,9 +108,7 @@ class ModelExporter:
         output_path: str = None,
         config_name : str = 'baseline',
         config_dir : str = '../../conf', 
-        input_shape: tuple = (1, 3, 224, 224),
-        fp16_mode: bool = False,
-        max_workspace_size: int = 1 << 30
+        fp16_mode: bool = False
     ):
         """
         Export .ckpt to TensorRT engine format
@@ -118,7 +122,7 @@ class ModelExporter:
         # First export to ONNX
         onnx_path = Path(ckpt_path).with_suffix('.onnx')
         if not onnx_path.exists():
-            self.to_onnx(ckpt_path, onnx_path, config_name, config_dir, input_shape)
+            self.to_onnx(ckpt_path, onnx_path, config_name, config_dir)
             
         if not output_path:
             output_path = Path(ckpt_path).with_suffix('.engine')
