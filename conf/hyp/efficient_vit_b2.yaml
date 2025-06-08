@@ -4,12 +4,12 @@ imgsz: 224
 
 optimizer:
   name: AdamW
-  lr: 3e-4
-  weight_decay: 0.005
+  lr: 3e-5
+  weight_decay: 0.03
 
 scheduler:
   name: CosineAnnealingLR
-  eta_min: 1e-6
+  eta_min: 1e-7
 
 augment:
   normalize:

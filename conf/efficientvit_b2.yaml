@@ -11,7 +11,7 @@ matmul: "medium"
 
 defaults:
   - data: kaggle_public.yaml
-  - model: resnet18.yaml
+  - model: efficient_vit_b2.yaml
   - trainer: default.yaml
-  - hyp: default.yaml
+  - hyp: efficient_vit_b2.yaml
   - _self_

@@ -2,6 +2,6 @@ name: ResNet18
 
 provider: huggingface
 source: microsoft/resnet-18
-pretrained : True
+pretrained: True
 
 num_classes: 20

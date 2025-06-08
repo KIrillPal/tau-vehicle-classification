@@ -1,8 +1,10 @@
-dir: data/public
-split:
-  train: True
-  val: True
-  test: True
+path: checkpoints/best.pt
+imgsz: 224
+
+transforms:
+  normalize:
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
 
 classes:
   - Ambulance
@@ -22,8 +24,3 @@ classes:
   - Taxi
   - Truck
   - Van
-
-loader:
-  shuffle: True
-  pin_memory: True
-  num_workers: 4
