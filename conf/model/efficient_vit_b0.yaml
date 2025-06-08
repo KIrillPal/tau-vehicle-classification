@@ -2,6 +2,6 @@ name: EfficientVit-b0
 
 provider: huggingface
 source: timm/efficientvit_b0.r224_in1k
-pretrained : True
+pretrained: True
 
 num_classes: 20

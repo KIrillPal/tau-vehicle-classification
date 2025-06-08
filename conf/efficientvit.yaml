@@ -6,7 +6,7 @@ store_exp_to: experiments
 debug: False
 seed: 42
 devices: [0]
-matmul: 'medium'
+matmul: "medium"
 #############
 
 defaults:

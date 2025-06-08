@@ -6,37 +6,38 @@ of vehicle type recognition models.
 
 Usage:
     python -m tau_vehicle <command> [options]
-    
+
 Commands:
     train       Train a vehicle classification model
     infer       Run inference on images
     export      Export checkpoint to different formats (pt, ONNX, TensorRT)
-    
+
 Examples:
     python3 -m tau_vehicle train
     python3 -m tau_vehicle infer conf/infer/baseline.yaml
     python3 -m tau_vehicle export to_engine checkpoints/best.ckpt
 """
 
-import fire
 import sys
+
+import fire
 from hydra import compose, initialize
 
-from tau_vehicle.src.train import train as train_py
-from tau_vehicle.src.infer import main as infer_py
 from tau_vehicle.src.export import ModelExporter
-    
+from tau_vehicle.src.infer import main as infer_py
+from tau_vehicle.src.train import train as train_py
 
-def load_hydra_config(config_dir : str, config_name : str):
+
+def load_hydra_config(config_dir: str, config_name: str):
     with initialize(version_base=None, config_path=config_dir):
         config = compose(config_name)
     return config
 
-    
-def train(config_name : str = 'baseline', config_dir : str = '../conf'):
+
+def train(config_name: str = "baseline", config_dir: str = "../conf"):
     """
     Train a vehicle classification model.
-    
+
     Args:
         config_name: Name of the configuration file
         config_dir: Directory containing configuration files
@@ -48,7 +49,7 @@ def train(config_name : str = 'baseline', config_dir : str = '../conf'):
 def infer(*args, **kwargs):
     """
     Run inference on images.
-    
+
     Args:
         config_path: Path to YAML configuration file for inference
         image_dir: Directory with images to classify (optional)
@@ -62,14 +63,14 @@ def infer(*args, **kwargs):
 
 def main():
     """Main entry point using Fire for CLI."""
-    
+
     # Create Fire CLI with available commands
     commands = {
-        'train': train,
-        'infer': infer,
-        'export': ModelExporter,
+        "train": train,
+        "infer": infer,
+        "export": ModelExporter,
     }
-    
+
     try:
         fire.Fire(commands)
     except KeyboardInterrupt:
@@ -80,7 +81,5 @@ def main():
         sys.exit(1)
 
 
-
 if __name__ == "__main__":
     main()
-
