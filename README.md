@@ -170,7 +170,6 @@ python3 -m tau_vehicle infer conf/infer/baseline.yaml
 - `image_dir`: Каталог с изображениями для классификации (опционально, если указан, то метод 1. Иначе 2)
 - `output_path`: Путь к файлу вывода YAML (по умолчанию: predictions.yaml)
 
-
 ## Troubleshooting
 
 Вы всегда можете написать мне в телеграмм по любому поводу [@kirpall](https://t.me/kirpall).
