@@ -36,7 +36,15 @@ cd tau-vehicle-classification
 poetry install --with dev
 ```
 
-3. Установка и запуск pre-commit hooks
+3. Настройте окружение
+
+```bash
+eval $(poetry env activate)
+export AWS_ACCESS_KEY_ID=minio # доступ к s3 проекта
+export AWS_SECRET_ACCESS_KEY=easystorage
+```
+
+4. Установка и запуск pre-commit hooks
 
 ```bash
 pre-commit install
@@ -49,13 +57,13 @@ pre-commit run -a
 Для запуска бейзлайна выполните команду из корня репозитория:
 
 ```bash
-poetry run python3 -m tau_vehicle train
+python3 -m tau_vehicle train
 ```
 
 или
 
 ```bash
-poetry run python3 -m tau_vehicle.src.train
+python3 -m tau_vehicle.src.train
 ```
 
 Вы также можете указать другой конфиг следующим образом:
@@ -161,3 +169,9 @@ python3 -m tau_vehicle infer conf/infer/baseline.yaml
 - `config_path`: Путь к файлу конфигурации YAML для инференса
 - `image_dir`: Каталог с изображениями для классификации (опционально, если указан, то метод 1. Иначе 2)
 - `output_path`: Путь к файлу вывода YAML (по умолчанию: predictions.yaml)
+
+
+## Troubleshooting
+
+Вы всегда можете написать мне в телеграмм по любому поводу [@kirpall](https://t.me/kirpall).
+Особенно приветствуются комментарии к работе.

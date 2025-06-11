@@ -167,7 +167,7 @@ def load_data(config: DictConfig):
     if not Path(config.data.dir).exists():
         print("- downloading from DVC remote storage")
         fs = DVCFileSystem(".")
-        fs.get(config.data.dir, Path(config.data.dir).parent, recursive=True)
+        fs.get(str(config.data.dir), str(Path(config.data.dir).parent), recursive=True)
 
     # Create a module
     print("- module initializing")
